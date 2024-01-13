@@ -26,17 +26,11 @@ const TabsNavigator = () => {
           fontWeight: "700",
           fontSize: 11,
         },
-        tabBarStyle: {
-          backgroundColor: "#e5cfd1",
-          borderRadius: 40,
-          marginBottom: 20,
-          paddingTop: 25,
-          marginHorizontal: 15,
-        },
-        tabBarShowLabel: false,
+
         headerTitleStyle: {
           color: "#111010",
           fontWeight: "600",
+          
         },
       }}
     >
@@ -45,19 +39,17 @@ const TabsNavigator = () => {
         component={Home}
         options={{
           headerStyle: {
-            backgroundColor: "#694D75",
+            backgroundColor: "#E5C3D1",
           },
           headerTitleStyle:{
-            color:"#fff",
+            color:"#000",
           },
           title: "Inicio",
           tabBarLabel: "Inicio",
           tabBarStyle: {
-            backgroundColor: "#694D75",
-            borderRadius: 40,
-            marginBottom: 20,
-            paddingTop: 25,
-            marginHorizontal: 15,
+            backgroundColor: "#E5C3D1",
+            paddingTop:7
+            
           },
           tabBarIcon: ({ focused }) =>
             focused ? (
@@ -81,10 +73,7 @@ const TabsNavigator = () => {
           tabBarLabel: "Contacto",
           tabBarStyle: {
             backgroundColor: "#B6CCA1",
-            borderRadius: 40,
-            marginBottom: 20,
-            paddingTop: 25,
-            marginHorizontal: 15,
+            paddingTop:7
           },
           tabBarIcon: ({ focused }) =>
             focused ? (
@@ -108,10 +97,7 @@ const TabsNavigator = () => {
           tabBarLabel: "Agregar Libro",
           tabBarStyle: {
             backgroundColor: "#9FC2CC",
-            borderRadius: 40,
-            marginBottom: 20,
-            paddingTop: 25,
-            marginHorizontal: 15,
+            paddingTop:7
           },
           tabBarIcon: ({ focused }) =>
             focused ? (
@@ -135,10 +121,7 @@ const TabsNavigator = () => {
           tabBarLabel: "Iniciar Sesion",
           tabBarStyle: {
             backgroundColor: "#F1ECCE",
-            borderRadius: 40,
-            marginBottom: 20,
-            paddingTop: 25,
-            marginHorizontal: 15,
+            paddingTop:7
           },
           tabBarIcon: ({ focused }) =>
             focused ? (

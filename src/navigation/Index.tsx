@@ -1,13 +1,21 @@
-import { NavigationContainer } from '@react-navigation/native'
-import React from 'react'
-import TabsNavigator from './Tab'
+import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
+import TabsNavigator from "./Tab";
+import { View, StyleSheet } from "react-native";
 
-const Index=()=> {
+const Index = () => {
   return (
-    <NavigationContainer>
-      <TabsNavigator/>
-    </NavigationContainer>
-  )
-}
-
-export default Index
+    <View style={style.container}>
+      <NavigationContainer>
+        <TabsNavigator />
+      </NavigationContainer>
+    </View>
+  );
+};
+const style = StyleSheet.create({
+  container: {
+    backgroundColor: "#ffffff",
+    flex: 1,
+  },
+});
+export default Index;

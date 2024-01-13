@@ -1,19 +1,17 @@
 
 import { StyleSheet, View } from 'react-native';
 import Index from './src/navigation/Index';
+import { StatusBar } from 'expo-status-bar';
 
 const App=()=> {
   return (
-  <View style={style.container}>
+  <>
+  <StatusBar style="dark"/>
+  <Index/>
+  </>
 
-    <Index/>
-  </View>
+ 
     )
 }
-const style =StyleSheet.create({
-  container: {
-    backgroundColor:'#ffffff',
-    flex:1
-  }
-})
+
 export default App
