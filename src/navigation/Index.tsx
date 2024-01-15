@@ -5,14 +5,14 @@ import { View, StyleSheet } from "react-native";
 
 const Index = () => {
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <NavigationContainer>
         <TabsNavigator />
       </NavigationContainer>
     </View>
   );
 };
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: "#ffffff",
     flex: 1,

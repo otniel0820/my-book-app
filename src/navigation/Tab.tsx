@@ -1,10 +1,11 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import AddBook from "../screens/AddBook";
-import Home from "../screens/Home";
-import Login from "../screens/Login";
 import { Ionicons } from "@expo/vector-icons";
-import Contact from "../screens/Contact";
+import HomeScreen from "../screens/HomeScreen";
+import LoginScreen from "../screens/LoginScreen";
+import ContactScreen from "../screens/ContactScreen";
+import AddBookScreen from "../screens/AddBookScreen";
+import HomeStack from "./HomeStack";
 
 type StackParamList = {
   Home: undefined;
@@ -36,11 +37,12 @@ const TabsNavigator = () => {
     >
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeStack}
         options={{
           headerStyle: {
             backgroundColor: "#E5C3D1",
           },
+          headerShown:false,
           headerTitleStyle:{
             color:"#000",
           },
@@ -61,7 +63,7 @@ const TabsNavigator = () => {
       />
       <Tab.Screen
         name="Contact"
-        component={Contact}
+        component={ContactScreen}
         options={{
           headerStyle: {
             backgroundColor: "#B6CCA1",
@@ -85,7 +87,7 @@ const TabsNavigator = () => {
       />
       <Tab.Screen
         name="AddBook"
-        component={AddBook}
+        component={AddBookScreen}
         options={{
           headerStyle: {
             backgroundColor: "#9FC2CC",
@@ -109,7 +111,7 @@ const TabsNavigator = () => {
       />
       <Tab.Screen
         name="Login"
-        component={Login}
+        component={LoginScreen}
         options={{
           headerStyle: {
             backgroundColor: "#F1ECCE",

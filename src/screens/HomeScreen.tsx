@@ -7,19 +7,24 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import { getBooks, url } from "../data/api";
+import { getBooks } from "../data/api";
 import { BookDTO } from "../domain/entities";
 import { SearchBar } from "@rneui/themed";
-import { useNavigation } from "@react-navigation/native";
-import DetailsBook from "./DetailsBook";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../navigation/HomeStack";
+import { useIsFocused } from '@react-navigation/native';
 
-type SearchBarComponentProps = {};
 
-const Home: React.FunctionComponent<SearchBarComponentProps> = () => {
+
+type HomeProps = NativeStackScreenProps<RootStackParamList, "HomeScreen">
+
+
+
+const HomeScreen = ({navigation}:HomeProps) => {
   const [books, setBooks] = useState<BookDTO[]>([]);
   const [filteredBooks, setFilteredBooks] = useState<BookDTO[]>([]);
   const [search, setSearch] = useState("");
-  const navigation = useNavigation();
+  const isFocused = useIsFocused(); 
 
   const updateSearch = (query: string) => {
     setSearch(query);
@@ -45,50 +50,47 @@ const Home: React.FunctionComponent<SearchBarComponentProps> = () => {
     };
 
     booksData();
-  }, []);
+  }, [isFocused]);
 
-  const navigateToDetails = () => {
-    
-    const bookId = books.map(book=> book.id); 
-    navigation.navigate("DetailsBook", { bookId });
+  const navigateToDetails = (selectedBook: BookDTO) => {
+    navigation.navigate("Details", { book: selectedBook });
   };
-
   const renderBookItem = ({ item }: { item: BookDTO }) => (
     <TouchableOpacity
-      onPress={navigateToDetails}
-      style={style.bookContainer}
+      onPress={()=>navigateToDetails(item)}
+      style={styles.bookContainer}
     >
       <Image
         source={{ uri: item.fileImg }}
-        style={style.bookImg}
+        style={styles.bookImg}
         alt={item.id.toString()}
       />
-      <Text style={style.text}>{item.title}</Text>
+      <Text style={styles.text}>{item.title}</Text>
     </TouchableOpacity>
   );
 
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <SearchBar
         placeholder="Buscar"
         value={search}
         onChangeText={updateSearch}
-        inputStyle={style.input}
-        containerStyle={style.containerSearch}
+        inputStyle={styles.input}
+        containerStyle={styles.containerSearch}
         lightTheme
       />
       <FlatList
         data={filteredBooks}
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderBookItem}
-        contentContainerStyle={style.flatListContainer}
+        contentContainerStyle={styles.flatListContainer}
         numColumns={2}
       />
     </View>
   );
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     paddingBottom: 55,
     backgroundColor: "#ECE5E8",
@@ -121,4 +123,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default Home;
+export default HomeScreen;
