@@ -1,22 +1,30 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { RootStackParamLoginList } from '../navigation/LoginStack';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-type LoginScreenProps = NativeStackScreenProps<RootStackParamLoginList, "LoginScreen">;
 
-const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
-  const handleLogin = () => {
-    // Lógica de inicio de sesión aquí
+type RegisterScreenProps = NativeStackScreenProps<RootStackParamLoginList, "Register">;
+
+const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
+  const handleRegister = () => {
+    // Lógica de registro aquí
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Iniciar Sesión</Text>
+      <Text style={styles.title}>Registro</Text>
 
       <TextInput
         style={styles.input}
-        placeholder="Usuario"
+        placeholder="Nombre"
+        autoCapitalize="words"
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Correo Electrónico"
+        keyboardType="email-address"
         autoCapitalize="none"
       />
 
@@ -26,14 +34,14 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
         secureTextEntry
       />
 
-      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Iniciar Sesión</Text>
+      <TouchableOpacity style={styles.registerButton} onPress={handleRegister}>
+        <Text style={styles.buttonText}>Registrarse</Text>
       </TouchableOpacity>
 
-      <View style={styles.registerContainer}>
-        <Text style={styles.registerText}>¿No tienes cuenta?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-          <Text style={styles.registerButton}>Registrarse</Text>
+      <View style={styles.loginContainer}>
+        <Text style={styles.loginText}>¿Ya tienes cuenta?</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+          <Text style={styles.loginButton}>Iniciar Sesión</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -60,8 +68,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     paddingHorizontal: 10,
   },
-  loginButton: {
-    backgroundColor: '#3498db',
+  registerButton: {
+    backgroundColor: '#27ae60',
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
@@ -70,20 +78,20 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
   },
-  registerContainer: {
+  loginContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 16,
   },
-  registerText: {
+  loginText: {
     fontSize: 16,
   },
-  registerButton: {
+  loginButton: {
     fontSize: 16,
     fontWeight: 'bold',
     marginLeft: 5,
-    color: '#3498db',
+    color: '#27ae60',
   },
 });
 
-export default LoginScreen;
+export default RegisterScreen;

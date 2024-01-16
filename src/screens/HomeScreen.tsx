@@ -93,7 +93,7 @@ const HomeScreen = ({navigation}:HomeProps) => {
 const styles = StyleSheet.create({
   container: {
     paddingBottom: 55,
-    backgroundColor: "#ECE5E8",
+    backgroundColor: "#dbf0f0",
   },
   flatListContainer: {
     paddingVertical: 16,

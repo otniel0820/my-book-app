@@ -1,16 +1,16 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
-import ContactScreen from "../screens/ContactScreen";
-import AddBookScreen from "../screens/AddBookScreen";
+import AboutScreen from "../screens/AboutScreen";
 import HomeStack from "./HomeStack";
+import CreateBookScreen from "../screens/CreateBookScreen";
+import LoginStack from "./LoginStack";
 
-type StackParamList = {
+export type StackParamList = {
   Home: undefined;
   Contact: undefined;
-  AddBook: undefined;
+  CreateBook: undefined;
   Login: undefined;
 };
 const Tab = createBottomTabNavigator<StackParamList>();
@@ -39,9 +39,6 @@ const TabsNavigator = () => {
         name="Home"
         component={HomeStack}
         options={{
-          headerStyle: {
-            backgroundColor: "#E5C3D1",
-          },
           headerShown:false,
           headerTitleStyle:{
             color:"#000",
@@ -49,7 +46,7 @@ const TabsNavigator = () => {
           title: "Inicio",
           tabBarLabel: "Inicio",
           tabBarStyle: {
-            backgroundColor: "#E5C3D1",
+            backgroundColor: "#6FC3C0",
             paddingTop:7
             
           },
@@ -63,7 +60,7 @@ const TabsNavigator = () => {
       />
       <Tab.Screen
         name="Contact"
-        component={ContactScreen}
+        component={AboutScreen}
         options={{
           headerStyle: {
             backgroundColor: "#B6CCA1",
@@ -71,23 +68,23 @@ const TabsNavigator = () => {
           headerTitleStyle:{
             color:"#000",
           },
-          title: "Contacto",
-          tabBarLabel: "Contacto",
+          title: "Sobre Nosotros",
+          tabBarLabel: "Sobre Nosotros",
           tabBarStyle: {
             backgroundColor: "#B6CCA1",
             paddingTop:7
           },
           tabBarIcon: ({ focused }) =>
             focused ? (
-              <Ionicons name="at-circle" size={26} color="black" />
+              <Ionicons name="information-circle-sharp" size={27} color="black" />
             ) : (
-              <Ionicons name="at" size={24} color="black" />
+              <Ionicons name="information-circle-outline" size={24} color="black" />
             ),
         }}
       />
       <Tab.Screen
-        name="AddBook"
-        component={AddBookScreen}
+        name="CreateBook"
+        component={CreateBookScreen}
         options={{
           headerStyle: {
             backgroundColor: "#9FC2CC",
@@ -111,15 +108,9 @@ const TabsNavigator = () => {
       />
       <Tab.Screen
         name="Login"
-        component={LoginScreen}
+        component={LoginStack}
         options={{
-          headerStyle: {
-            backgroundColor: "#F1ECCE",
-          },
-          headerTitleStyle:{
-            color:"#000",
-          },
-          title: "Iniciar Sesion",
+         headerShown: false,
           tabBarLabel: "Iniciar Sesion",
           tabBarStyle: {
             backgroundColor: "#F1ECCE",

@@ -18,7 +18,7 @@ const HomeStack = () => {
     <Stack.Screen name="HomeScreen" component={HomeScreen} options={{
       title: "Inicio",
       headerStyle:{
-        backgroundColor:"#E5C3D1"
+        backgroundColor:"#6FC3C0"
       }
     }}/>
     <Stack.Screen name="Details" component={DetailsBookScreen} options={{
