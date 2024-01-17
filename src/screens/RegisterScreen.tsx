@@ -1,15 +1,21 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { RootStackParamLoginList } from '../navigation/LoginStack';
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+import { RootStackParamLoginList } from "../navigation/LoginStack";
 
-
-type RegisterScreenProps = NativeStackScreenProps<RootStackParamLoginList, "Register">;
+type RegisterScreenProps = NativeStackScreenProps<
+  RootStackParamLoginList,
+  "Register"
+>;
 
 const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
-  const handleRegister = () => {
-    // Lógica de registro aquí
-  };
+  const handleRegister = async () => {};
 
   return (
     <View style={styles.container}>
@@ -40,7 +46,7 @@ const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
 
       <View style={styles.loginContainer}>
         <Text style={styles.loginText}>¿Ya tienes cuenta?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+        <TouchableOpacity onPress={() => navigation.navigate("LoginScreen")}>
           <Text style={styles.loginButton}>Iniciar Sesión</Text>
         </TouchableOpacity>
       </View>
@@ -52,35 +58,35 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 16,
-    textAlign: 'center',
+    textAlign: "center",
   },
   input: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderWidth: 1,
     borderRadius: 5,
     marginBottom: 16,
     paddingHorizontal: 10,
   },
   registerButton: {
-    backgroundColor: '#27ae60',
+    backgroundColor: "#27ae60",
     padding: 10,
     borderRadius: 5,
-    alignItems: 'center',
+    alignItems: "center",
   },
   buttonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
   },
   loginContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     marginTop: 16,
   },
   loginText: {
@@ -88,9 +94,9 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginLeft: 5,
-    color: '#27ae60',
+    color: "#27ae60",
   },
 });
 

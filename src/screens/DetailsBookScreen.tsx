@@ -6,6 +6,7 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import axios from "axios";
@@ -22,13 +23,32 @@ const DetailsBookScreen: React.FC<DetailsScreenProps> = ({
   const { book: initialBook } = route.params;
   const [book, setBook] = useState(initialBook);
 
+  const showDeleteConfirmation = () => {
+    Alert.alert(
+      "Eliminar libro",
+      "¿Está seguro de que desea eliminar este libro?",
+      [
+        {
+          text: "Cancelar",
+          style: "cancel",
+        },
+        {
+          text: "Eliminar",
+          onPress: deleteBook,
+          style: "destructive",
+        },
+      ],
+      { cancelable: false }
+    );
+  };
+
   const deleteBook = async () => {
     try {
       await axios.delete(`${url}/${book.id}`);
-      console.log('Libro eliminado exitosamente');
+      console.log("Libro eliminado exitosamente");
       navigation.navigate("HomeScreen");
     } catch (error) {
-      console.error('Error al eliminar el libro:', error);
+      console.error("Error al eliminar el libro:", error);
     }
   };
 
@@ -37,11 +57,10 @@ const DetailsBookScreen: React.FC<DetailsScreenProps> = ({
       const updatedBook = await axios.get(`${url}/${book.id}`);
       setBook(updatedBook.data);
     } catch (error) {
-      console.error('Error al obtener el libro actualizado:', error);
+      console.error("Error al obtener el libro actualizado:", error);
     }
   };
 
-  // Llamamos a fetchUpdatedBook cuando la pantalla se enfoca
   useFocusEffect(
     useCallback(() => {
       fetchUpdatedBook();
@@ -87,7 +106,7 @@ const DetailsBookScreen: React.FC<DetailsScreenProps> = ({
 
       <TouchableOpacity
         style={styles.buttonDeleted}
-        onPress={deleteBook}
+        onPress={showDeleteConfirmation}
       >
         <Text style={styles.buttonText}>Eliminar Libro</Text>
       </TouchableOpacity>
